@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Digital Native Ventures</title>
+  <style>
+    :root { --navy: #1F4E79; --navy-light: #2E6DA4; --accent: #4A9FD4; --bg: #0D1117; --surface: #161B22; --border: #30363D; --text: #E6EDF3; --muted: #8B949E; --tag-bg: #1F3A5F; --tag-text: #7DD3FC; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 48px; border-bottom: 1px solid var(--border); position: sticky; top: 0; background: rgba(13,17,23,0.92); backdrop-filter: blur(8px); z-index: 100; }
+    .logo { font-size: 1.1rem; font-weight: 700; color: var(--text); letter-spacing: -0.02em; }
+    .logo span { color: var(--accent); }
+    nav a { color: var(--muted); text-decoration: none; font-size: 0.9rem; margin-left: 28px; transition: color 0.2s; }
+    nav a:hover { color: var(--text); }
+    .hero { max-width: 860px; margin: 0 auto; padding: 96px 48px 72px; text-align: center; }
+    .badge { display: inline-block; background: var(--tag-bg); color: var(--tag-text); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 14px; border-radius: 999px; margin-bottom: 28px; border: 1px solid rgba(74,159,212,0.25); }
+    .hero h1 { font-size: clamp(2.2rem, 5vw, 3.4rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 20px; background: linear-gradient(135deg, #E6EDF3 0%, var(--accent) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero p { font-size: 1.1rem; color: var(--muted); max-width: 620px; margin: 0 auto 36px; }
+    .cta-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .btn { display: inline-block; padding: 11px 26px; border-radius: 8px; font-size: 0.92rem; font-weight: 600; text-decoration: none; transition: all 0.2s; }
+    .btn-primary { background: var(--accent); color: #0D1117; }
+    .btn-primary:hover { background: #6BB8E4; }
+    .btn-ghost { border: 1px solid var(--border); color: var(--text); }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+    .stats { display: flex; justify-content: center; gap: 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 28px 48px; flex-wrap: wrap; }
+    .stat { flex: 1; min-width: 160px; text-align: center; padding: 8px 24px; border-right: 1px solid var(--border); }
+    .stat:last-child { border-right: none; }
+    .stat-num { font-size: 1.9rem; font-weight: 800; color: var(--accent); letter-spacing: -0.03em; }
+    .stat-label { font-size: 0.78rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 2px; }
+    section { max-width: 1000px; margin: 0 auto; padding: 72px 48px; }
+    .section-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+    .section-title { font-size: 1.9rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 14px; }
+    .section-sub { color: var(--muted); font-size: 1rem; max-width: 600px; margin-bottom: 48px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; transition: border-color 0.2s, transform 0.15s; }
+    .card:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .card-icon { font-size: 1.6rem; margin-bottom: 14px; }
+    .card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; color: var(--text); }
+    .card p { font-size: 0.875rem; color: var(--muted); line-height: 1.55; margin-bottom: 16px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tag { background: var(--tag-bg); color: var(--tag-text); font-size: 0.7rem; font-weight: 600; padding: 3px 9px; border-radius: 999px; letter-spacing: 0.04em; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1.6fr; gap: 48px; align-items: start; }
+    @media (max-width: 680px) { .about-grid { grid-template-columns: 1fr; } }
+    .founder-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px; text-align: center; }
+    .avatar { width: 72px; height: 72px; border-radius: 50%; background: linear-gradient(135deg, var(--navy), var(--accent)); display: flex; align-items: center; justify-content: center; font-size: 1.6rem; margin: 0 auto 14px; }
+    .founder-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 4px; }
+    .founder-card .title { font-size: 0.85rem; color: var(--accent); margin-bottom: 14px; }
+    .founder-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.5; margin-bottom: 16px; }
+    .social-links { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+    .social-link { font-size: 0.78rem; padding: 5px 12px; border: 1px solid var(--border); border-radius: 6px; color: var(--muted); text-decoration: none; transition: all 0.2s; }
+    .social-link:hover { color: var(--accent); border-color: var(--accent); }
+    .about-text h2 { font-size: 1.55rem; font-weight: 800; margin-bottom: 16px; letter-spacing: -0.02em; }
+    .about-text p { color: var(--muted); font-size: 0.95rem; line-height: 1.7; margin-bottom: 16px; }
+    .skill-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+    .skill-pill { background: var(--surface); border: 1px solid var(--border); color: var(--text); font-size: 0.8rem; padding: 5px 13px; border-radius: 999px; }
+    footer { border-top: 1px solid var(--border); padding: 28px 48px; text-align: center; color: var(--muted); font-size: 0.82rem; }
+    footer a { color: var(--accent); text-decoration: none; }
+    @media (max-width: 600px) { nav { padding: 16px 20px; } .hero { padding: 64px 20px 48px; } section { padding: 48px 20px; } .stats { padding: 20px; } footer { padding: 20px; } }
+  </style>
+</head>
+<body>
+  <nav><div class="logo">Digital Native <span>Ventures</span></div><div><a href="#projects">Projects</a><a href="#about">About</a><a href="https://github.com/Digital-Native-Ventures" target="_blank">GitHub</a><a href="https://linkedin.com/in/chris-kang-45b3379" target="_blank">LinkedIn</a></div></nav>
+  <div class="hero"><div class="badge">AI Engineering · Lisbon, Portugal</div><h1>Building Autonomous AI Systems That Actually Work</h1><p>Production-grade multi-agent orchestration, AI-governed trading infrastructure, and enterprise-scale autonomous pipelines — built and operated from the ground up.</p><div class="cta-row"><a href="#projects" class="btn btn-primary">View Projects</a><a href="https://github.com/Digital-Native-Ventures" class="btn btn-ghost" target="_blank">GitHub Org →</a></div></div>
+  <div class="stats"><div class="stat"><div class="stat-num">5,300+</div><div class="stat-label">Agent Events Tracked</div></div><div class="stat"><div class="stat-num">1,500+</div><div class="stat-label">Autonomous Decisions</div></div><div class="stat"><div class="stat-num">13</div><div class="stat-label">Trading Microservices</div></div><div class="stat"><div class="stat-num">4</div><div class="stat-label">Persistent Agents</div></div><div class="stat"><div class="stat-num">55+</div><div class="stat-label">MCP Tools</div></div></div>
+  <section id="projects"><div class="section-label">What We've Built</div><h2 class="section-title">Production AI Systems</h2><p class="section-sub">Each project is live, actively running, and producing real outputs — not demos or prototypes.</p><div class="grid"><div class="card"><div class="card-icon">🧠</div><h3>Persistent Agent Architecture (PAA)</h3><p>Four autonomous agents — Atlas, Aegis, Orion, Luna — operating continuously with self-improvement loops, HITL escalation, and cross-lane A2A messaging. Atlas alone: 5,300+ events, 1,500+ decisions, 66 active hypotheses.</p><div class="tags"><span class="tag">Multi-Agent</span><span class="tag">Self-Improvement</span><span class="tag">Python</span><span class="tag">Claude Code</span></div></div><div class="card"><div class="card-icon">⚙️</div><h3>Autonomous Governance Platform</h3><p>SPEC-to-execution pipeline: Perfect SPEC (30-point quality gate) → Plane.so task decomposition (55+ MCP tools) → multi-vendor LLM execution (Claude Code + Codex CLI + Ollama) → AC verification → retrospective. Proven end-to-end on SPEC-0012.</p><div class="tags"><span class="tag">Claude Code</span><span class="tag">Codex CLI</span><span class="tag">Ollama</span><span class="tag">Plane.so</span></div></div><div class="card"><div class="card-icon">📈</div><h3>Aegis Finance &amp; Trading</h3><p>OODA-cycle finance agent with a personal finance control tower (REST API, React dashboard, PostgreSQL, MCP server) and a risk-gated AI trading swarm: 13 microservices including backtest engine, walkforward validator, and live systemd dashboard.</p><div class="tags"><span class="tag">13 Microservices</span><span class="tag">React</span><span class="tag">PostgreSQL</span><span class="tag">DeFi</span></div></div><div class="card"><div class="card-icon">🔭</div><h3>Atlas Ops Orchestration</h3><p>16 automated infrastructure checks, policy-gated remediation, cross-lane A2A messaging, and an intelligence engine with hypotheses tracking and self-improvement mutation gate.</p><div class="tags"><span class="tag">Ops Automation</span><span class="tag">Policy Gating</span><span class="tag">A2A Messaging</span></div></div><div class="card"><div class="card-icon">🎓</div><h3>Orion Education System</h3><p>AI-powered education governance: AI tutor with UI/UX validation skills, LLM-based human cognitive assessment, and a PAA-governed quality pipeline with Telegram ORION SCHOOL integration.</p><div class="tags"><span class="tag">LangGraph</span><span class="tag">Cognitive Assessment</span><span class="tag">Telegram</span></div></div><div class="card"><div class="card-icon">🌙</div><h3>Luna Personal Gateway</h3><p>Multi-channel intake (Discord + Telegram), daily digest automation, and personal delegation workflows — connecting personal context to the PAA intelligence engine across sessions.</p><div class="tags"><span class="tag">Discord</span><span class="tag">Telegram</span><span class="tag">Automation</span><span class="tag">N8N</span></div></div></div></section>
+  <section id="about" style="padding-top: 0;"><div class="section-label">The Founder</div><h2 class="section-title" style="margin-bottom: 40px;">Built by a 20-Year Enterprise Architect</h2><div class="about-grid"><div class="founder-card"><div class="avatar">CK</div><h3>Chris Kang</h3><div class="title">Founder &amp; AI Engineer</div><p>20+ years in enterprise infrastructure. Sr. Solution Engineer at VMware. Pre-sales architect at Zones and Red8. Now building the AI infrastructure enterprise is evaluating.</p><div class="social-links"><a href="https://linkedin.com/in/chris-kang-45b3379" class="social-link" target="_blank">LinkedIn</a><a href="https://github.com/locotoki" class="social-link" target="_blank">GitHub</a></div></div><div class="about-text"><h2>Why Digital Native Ventures?</h2><p>Most AI demos are built to impress, not to run. Digital Native Ventures exists to prove that autonomous AI systems can operate reliably in production — handling real workloads, making real decisions, and improving themselves over time.</p><p>The work here draws directly from enterprise SE experience: understanding how infrastructure buyers think, what PoC success actually looks like, and how to build systems that earn trust at the C-level.</p><p>Based in Lisbon, Portugal. US Citizen. Open to remote EMEA and US opportunities.</p><div class="skill-list"><span class="skill-pill">Multi-Agent Systems</span><span class="skill-pill">Claude Code</span><span class="skill-pill">LangGraph</span><span class="skill-pill">Python / FastAPI</span><span class="skill-pill">React / TypeScript</span><span class="skill-pill">PostgreSQL</span><span class="skill-pill">Docker / systemd</span><span class="skill-pill">Plane.so MCP</span><span class="skill-pill">Pre-Sales SE</span><span class="skill-pill">Enterprise Architecture</span></div></div></div></section>
+  <footer><p>© 2026 Digital Native Ventures · Lisbon, Portugal · <a href="https://github.com/Digital-Native-Ventures">GitHub</a> · <a href="https://linkedin.com/in/chris-kang-45b3379">LinkedIn</a></p></footer>
+</body>
+</html>
